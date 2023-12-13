@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../src/utils/api";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const { articleId } = useParams();
@@ -19,7 +20,7 @@ const SingleArticle = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [articleId]);
 
   if (isLoading) return <p>It's Loading!!!</p>;
 
@@ -35,6 +36,9 @@ const SingleArticle = () => {
       </div>
       <p>{article.body}</p>
       <img src={article.article_img_url} alt="Article Image" />
+      <section>
+        <Comments articleId={articleId}/>
+      </section>
     </div>
   );
 };

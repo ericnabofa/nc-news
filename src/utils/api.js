@@ -14,7 +14,14 @@ export const getSingleArticle = (article_id) => {
     return api
     .get(`/api/articles/${article_id}`)
     .then(({data}) => {
-        console.log(data)
         return data.article
+    })
+}
+
+export const getArticleComments = (article_id) => {
+    return api
+    .get(`/api/articles/${article_id}/comments`)
+    .then(({data}) => {
+        return data.comments
     })
 }

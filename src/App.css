@@ -155,6 +155,11 @@ p {
   word-wrap: break-word;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+  }
+
 @media screen and (max-width: 600px) {
   .article-info {
     flex-direction: column;
