@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 function ArticleCard(props) {
     const article = props.article;
     return (
         <section className='article-card'>
-            <h3 className='article-card-title'>{article.title}</h3>
+            <Link to={`/ArticlesList/${article.article_id}`}><h3 className='article-card-title'>{article.title}</h3></Link>
             <div id='article-info'>
                 <ul>
                     <li>{article.topic}</li>

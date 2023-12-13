@@ -1,14 +1,20 @@
 import axios from 'axios';
 
-//const api = axios.create({baseURL: 'https://nc-news-be-l4gr.onrender.com'})
+const api = axios.create({baseURL: 'https://nc-news-be-l4gr.onrender.com'})
 
-function getAllArticles () {
-    return axios
-    .get(`https://nc-news-be-l4gr.onrender.com/api/articles`)
-    .then((response) => {
-        console.log(response)
-        return response.data.articles
+export const getAllArticles =  () => {
+    return api
+    .get(`/api/articles`)
+    .then(({data}) => {
+        return data.articles
     })
 }
 
-export default getAllArticles;
+export const getSingleArticle = (article_id) => {
+    return api
+    .get(`/api/articles/${article_id}`)
+    .then(({data}) => {
+        console.log(data)
+        return data.article
+    })
+}
