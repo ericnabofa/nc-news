@@ -6,9 +6,14 @@ import NavBar from "../Components/NavBar";
 import Home from "../Components/Home";
 import Feature from "../Components/Feature";
 import SingleArticle from "../Components/SingleArticle";
+import { UserProvider } from "../Components/UserContext";
+
 
 function App() {
+    const loggedInUser = 'tickle122'
+
   return (
+    <UserProvider value={loggedInUser}>
     <BrowserRouter>
       <div className="app">
         <Header />
@@ -22,6 +27,7 @@ function App() {
         </section>
       </div>
     </BrowserRouter>
+     </UserProvider>
   );
 }
 
