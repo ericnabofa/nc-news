@@ -1,52 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { postComment } from '../src/utils/api';
 
-const CommentAdder = ({ articleId, setComments }) => {
+const CommentAdder = ({ articleId, setComments, loggedInUser }) => {
   const [comment, setComment] = useState('');
   const [error, setError] = useState(null);
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isCommentButtonDisabled, setIsCommentButtonDisabled] = useState(true);
-
+  const [isCommentButtonDisabled, setIsCommentButtonDisabled] = useState(false); 
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const [addSuccess, setAddSuccess] = useState(null);
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
     setError(null);
-    setIsCommentButtonDisabled(e.target.value.trim() === "");
+    setIsCommentButtonDisabled(e.target.value.trim() === "" || isSubmitting); 
   };
 
-  
   const validateForm = () => {
     setIsFormValid(comment.trim() !== '');
     setError(null);
-  }
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     validateForm();
 
     if (isFormValid && !isCommentButtonDisabled) {
+      setIsSubmitting(true); 
+      const currentDate = new Date().toISOString();
 
-        const currentDate = new Date().toISOString();
+    
+      const newComment = { body: comment, author: loggedInUser, created_at: currentDate };
 
-      // Optimistically update UI
-      setComments((prevComments) => {
-        return [{ body: comment, author: 'tickle122', created_at: currentDate}, ...prevComments]
-    });
+      setComments((prevComments) => [newComment, ...prevComments]);
 
-      // Make API call to save the comment
+    
       postComment(articleId, { username: 'tickle122', body: comment })
         .then(() => {
           setComment('');
-          setIsCommentButtonDisabled(true)
-          setError(null)
+          setAddSuccess('Comment added successfully!');
+          setError(null);
         })
         .catch((error) => {
           setError('Failed to submit comment. Please try again.');
+          setComments((prevComments) => prevComments.filter((c) => c !== newComment)); 
         })
+        .finally(() => {
+          setIsSubmitting(false); 
+        });
     }
   };
 
-  
+  useEffect(() => {
+    if (addSuccess) {
+      const timerId = setTimeout(() => {
+        setAddSuccess(null);
+      }, 3000); 
+
+      return () => clearTimeout(timerId);
+    }
+  }, [addSuccess]);
+
   return (
     <div>
       <textarea
@@ -55,11 +68,13 @@ const CommentAdder = ({ articleId, setComments }) => {
         onBlur={validateForm}
         placeholder="Add a comment..."
       />
-      {error && <p>{error}</p>} 
-      <button onClick={handleSubmit}
-          disabled={isCommentButtonDisabled}
-        >
-        Submit Comment
+      {error && <p>{error}</p>}
+      {addSuccess && <p className="success-message">{addSuccess}</p>}
+      <button
+        onClick={handleSubmit}
+        disabled={isCommentButtonDisabled}
+      >
+        {isSubmitting ? 'Submitting...' : 'Submit Comment'}
       </button>
     </div>
   );
