@@ -39,3 +39,17 @@ export const voteOnArticle = (articleId, voteType) => {
         throw error;
       });
   };
+
+  export const postComment = (articleId, newComment) => {
+
+    const comment = {
+        username: "tickle122",
+        body: newComment.body
+      } 
+
+        return api
+    .post(`/api/articles/${articleId}/comments`, comment )
+    .then((data) => {
+        return data.comment
+    })
+  }
