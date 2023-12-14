@@ -25,3 +25,17 @@ export const getArticleComments = (article_id) => {
         return data.comments
     })
 }
+
+export const voteOnArticle = (articleId, voteType) => {
+    const incVotes = voteType === 'up' ? 1 : voteType === 'down' ? -1 : 0;
+
+    return api
+      .patch(`/api/articles/${articleId}`, { inc_votes: incVotes })
+      .then(({data}) => {
+      const vote = data.updatedArticle.votes
+        return vote;
+    })
+      .catch((error) => {
+        throw error;
+      });
+  };

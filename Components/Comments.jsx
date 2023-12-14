@@ -1,32 +1,42 @@
-import { useEffect, useState } from "react"
-import { getArticleComments } from "../src/utils/api"
+import { useEffect, useState } from "react";
+import { getArticleComments } from "../src/utils/api";
 
+const Comments = ({ articleId }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [comments, setComments] = useState([]);
 
-const Comments = ({articleId}) => {
+  useEffect(() => {
+    getArticleComments(articleId)
+      .then((commentsFromApi) => {
+        setComments(commentsFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setIsError(true);
+        setIsLoading(false);
+      });
+  }, [articleId]);
 
-    const [comments, setComments] = useState([])
+  return (
+    <section className="comment-container">
+      <h2>Comments</h2>
+      <ul>
+        {comments.map((comment) => {
+          return (
+            <li key={comment.comment_id} className="comment">
+              <div className="comment-info">
+                <span>Author: {comment.author}</span>
+                <span>Created at: {comment.created_at}</span>
+              </div>
 
-    useEffect(() => {
-        getArticleComments(articleId).then((commentsFromApi) => {
-            setComments(commentsFromApi)
-        })
-    }, [articleId])
-
-
-return (
-    <section>
-        <h2>Comments</h2>
-        <ol>
-            {comments.map((comment) => {
-                return (
-                    <li key={comment.comment_id}>
-                        <p>{comment.body}</p>
-                    </li>
-                )
-            })}
-        </ol>
+              <p>{comment.body}</p>
+            </li>
+          );
+        })}
+      </ul>
     </section>
-)
-}
+  );
+};
 
-export default Comments
+export default Comments;
