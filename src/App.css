@@ -215,6 +215,17 @@ img {
     font-size: 0.8em;
   }
   
+#refresh-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: pink;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 2px solid #ccc;
+  }
   
 
 @media screen and (max-width: 600px) {

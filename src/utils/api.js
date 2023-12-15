@@ -54,6 +54,23 @@ export const voteOnArticle = (articleId, voteType) => {
     })
   }
 
+  export const getAllTopics =  () => {
+    return api
+    .get(`/api/topics`)
+    .then(({data}) => {
+        return data.topics
+    })
+}
+
+
+export const getArticlesByTopic = (topic) => {
+    return api
+    .get(`/api/articles?topic=${topic}`)
+    .then(({data}) => {
+        return data.articles
+})
+}
+
 
 export const deleteComment = (commentId) => {
     return api
