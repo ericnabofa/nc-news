@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ArticlesList from "./ArticlesList";
 import SingleArticle from "./SingleArticle";
+import TopicsList from "./TopicsList";
 
 
 const Feature = () => {
@@ -18,6 +19,7 @@ const Feature = () => {
 
   const featureComponents = {
     ArticlesList: <ArticlesList />,
+    TopicsList: <TopicsList />
   };
  
   const selectedFeature = featureComponents[feature];

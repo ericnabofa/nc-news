@@ -15,7 +15,7 @@ function App() {
         <NavBar />
         <section className="content-page">
         <Routes>
-          <Route path="*" element={<Home />}/>
+          <Route path="/" element={<Home />}/>
           <Route path="/:feature" element={<Feature />}/>
           <Route path="/:feature/:articleId" element={<SingleArticle />} />
         </Routes>
