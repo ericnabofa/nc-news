@@ -70,3 +70,13 @@ export const getArticlesByTopic = (topic) => {
         return data.articles
 })
 }
+
+
+export const deleteComment = (commentId) => {
+    return api
+      .delete(`/api/comments/${commentId}`)
+      .then(() => {
+        console.log('Comment deleted successfully');
+      })
+  };
+  

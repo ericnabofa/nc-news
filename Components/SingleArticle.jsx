@@ -3,15 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, voteOnArticle } from "../src/utils/api";
 import Comments from "./Comments";
+import { useUserContext } from "./UserContext";
 
 const SingleArticle = () => {
     const [votes, setVotes] = useState(0);
-
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-
+  
+  const loggedInUser = useUserContext();
   
   useEffect(() => {
     getSingleArticle(articleId)
@@ -59,7 +60,7 @@ const SingleArticle = () => {
       <button onClick={() => handleVote('down')}>Downvote</button>
 
       <section>
-        <Comments articleId={articleId}/>
+        <Comments articleId={articleId} loggedInUser={loggedInUser}/>
       </section>
     </div>
   );
