@@ -12,7 +12,10 @@
   "dependencies": {
     "axios": "^1.6.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sharp": "^0.33.0",
+    "source-map-url": "^0.4.1",
+    "urix": "^0.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
