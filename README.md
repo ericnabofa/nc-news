@@ -23,12 +23,18 @@ This is a social news aggregation, web content rating, and discussion website wh
 
 ## Setup Instructions
 
-1. Clone the repository:
-2. Navigate to the project directory:
+1. Navigate to the project directory: 
+cd 'your_project_directory'
+
+2. Clone the repository: 
+git clone https://github.com/ericnabofa/nc-news.git 
+
 3. Install dependencies:
 'npm install'
+
 4. Start the development server:
 'npm run dev'
+
 5. Open your browser and visit `http://localhost:3000` to view the website.
 
 

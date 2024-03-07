@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({baseURL: 'https://nc-news-be-l4gr.onrender.com'})
+const api = axios.create({baseURL: 'https://first-back-end-project.onrender.com'})
 
 export const getAllArticles =  () => {
     return api
