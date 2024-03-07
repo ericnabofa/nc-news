@@ -23,24 +23,12 @@
   justify-content: space-evenly;
 }
 
-/* .content-page {
-    height: 85vh;
-    border: 2px solid orange;
-    display: flex;
-    flex-direction: row;
-    flex-basis: 100%;
-    align-items: flex-start;
-    padding: 15px;
-    margin: 1rem;
-    justify-content: space-around;
-} */
-
 .content-page {
   height: 85vh;
   border: 2px solid orange;
   display: flex;
-  justify-content: space-around; /* Adjust as needed */
-  align-items: left; /* Adjust as needed */
+  justify-content: space-around; 
+  align-items: left;
   padding: 15px;
   padding-left: 1px;
   padding-bottom: 15px;
@@ -90,35 +78,6 @@ ul {
   font-size: 25px;
   margin-top: 5px;
 }
-
-/*
-.ExcitingContent1Feature {
-    text-align: left;
-    padding: 10px;
-    padding-bottom: 100px;
-    padding-right: 255px;
-    margin: 1rem;
-    border: 2px solid red;
-}
-
-.ExcitingContent1Feature p {
-    font-size: 25px;
-    margin-top: 5px;
-}
-
-.ExcitingContent2Feature {
-    text-align: left;
-    padding: 10px;
-    padding-bottom: 100px;
-    padding-right: 255px;
-    margin: 1rem;
-    border: 2px solid red;
-}
-
-.ExcitingContent2Feature p {
-    font-size: 25px;
-    margin-top: 5px;
-} */
 
 .FeaturesList {
   padding-left: 1px;
@@ -227,10 +186,123 @@ img {
     border-bottom: 2px solid #ccc;
   }
   
-
-@media screen and (max-width: 600px) {
-  .article-info {
+/* Media Query for screen sizes below 450px */
+@media screen and (max-width: 449px) {
+  .Header {
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+  
+  #nav {
+    font-size: 1.2rem;
     flex-direction: column;
     align-items: center;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .content-page {
+    height: auto;
+    padding: 10px;
+  }
+
+  .link {
+    flex-direction: row;
+    padding: 10px;
+    margin: 0.5rem;
+  }
+
+  #ArticlesListFeature, #TopicsListFeature {
+    padding-right: 10px;
+  }
+
+  #ArticlesListFeature p, #TopicsListFeature p {
+    font-size: 20px;
+  }
+
+  .single-article-container {
+    padding: 5px;
   }
 }
+
+/* Media Query for screen sizes between 450px and 1000px */
+@media screen and (min-width: 450px) and (max-width: 1000px) {
+  .Header {
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+  
+  #nav {
+    font-size: 1.2rem;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .content-page {
+    padding: 10px;
+  }
+
+  .link {
+    padding: 10px;
+    margin: 0.5rem;
+  }
+
+  #ArticlesListFeature, #TopicsListFeature {
+    padding-right: 10px;
+  }
+
+  #ArticlesListFeature p, #TopicsListFeature p {
+    font-size: 20px;
+  }
+
+  .single-article-container {
+    padding: 5px;
+  }
+}
+
+/* Media Query for screen sizes above 1000px */
+@media screen and (min-width: 1001px) {
+  .Header {
+    font-size: 2.5rem;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  #nav {
+    font-size: 1.5rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .content-page {
+    padding: 15px;
+    padding-left: 1px;
+    padding-bottom: 15px;
+    margin: 1rem;
+  }
+
+  .link {
+    padding: 15px;
+    margin: 1rem;
+  }
+
+  #ArticlesListFeature, #TopicsListFeature {
+    padding-right: 315px;
+  }
+
+  #ArticlesListFeature p, #TopicsListFeature p {
+    font-size: 25px;
+  }
+
+  .single-article-container {
+    padding: 10px;
+  }
+}
+
+
