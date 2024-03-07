@@ -186,6 +186,45 @@ img {
     border-bottom: 2px solid #ccc;
   }
   
+  @media screen and (max-width: 349px) {
+    .Header {
+      font-size: 2rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+    }
+    
+    #nav {
+      font-size: 1.2rem;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem;
+      margin: 0.5rem;
+    }
+  
+    .content-page {
+      height: auto;
+      padding: 10px;
+    }
+  
+    .link {
+      flex-direction: row;
+      padding: 10px;
+      margin: 0.5rem;
+    }
+  
+    #ArticlesListFeature, #TopicsListFeature {
+      padding-right: 10px;
+    }
+  
+    #ArticlesListFeature p, #TopicsListFeature p {
+      font-size: 20px;
+    }
+  
+    .single-article-container {
+      padding: 5px;
+    }
+  }
+
 @media screen and (min-width: 350px) and (max-width: 750px) {
   .Header {
     font-size: 2rem;
